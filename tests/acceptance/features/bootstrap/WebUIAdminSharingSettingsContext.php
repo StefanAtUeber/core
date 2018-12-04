@@ -209,6 +209,17 @@ class WebUIAdminSharingSettingsContext extends RawMinkContext implements Context
 	}
 
 	/**
+	 * @When the administrator enables exclude groups from sharing using the webUI
+	 *
+	 * @return void
+	 */
+	public function theAdministratorEnablesExcludeGroupsFromSharingUsingTheWebui() {
+		$this->adminSharingSettingsPage->enableExcludeGroupFromSharing(
+			$this->getSession()
+		);
+	}
+
+	/**
 	 * @When the administrator adds group :group to the group sharing blacklist using the webUI
 	 *
 	 * @param string $group
@@ -217,6 +228,19 @@ class WebUIAdminSharingSettingsContext extends RawMinkContext implements Context
 	 */
 	public function theAdministratorAddsGroupToTheGroupSharingBlacklistUsingTheWebui($group) {
 		$this->adminSharingSettingsPage->addGroupToGroupSharingBlacklist(
+			$this->getSession(), $group
+		);
+	}
+
+	/**
+	 * @When the administrator excludes group :group from receiving shares using the webUI
+	 *
+	 * @param string $group
+	 *
+	 * @return void
+	 */
+	public function theAdministratorExcludesGroupFromReceivingSharesUsingTheWebui($group) {
+		$this->adminSharingSettingsPage->addGroupToExcludedFromReceivingShares(
 			$this->getSession(), $group
 		);
 	}
